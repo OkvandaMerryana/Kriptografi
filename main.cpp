@@ -1,9 +1,9 @@
-//Deskripsi sembarang berkas dengan
-//algoritma XOR sederhana.
+//Enkripsi sembarang berkas dengan
+//Algoritma XOR sederhana.
 #include <iostream>
 #include <string.h>
-#include <stdlib.h>
 #include <fstream>
+#include <stdlib.h>
 using namespace std;
 
 main(int argc, char *argv[])
@@ -14,19 +14,19 @@ main(int argc, char *argv[])
     int i;
 
     Fin = fopen(argv[1], "rb");
-    if (Fin == NULL){
-        cout <<"Berkas " << argv[1] <<" tidak ada " << endl;
-        exit(0);
+    if (Fin == NULL) {
+        cout << "Berkas" << argv[1] <<"tidak ada"<<endl;
+        exit (0);
     }
     Fout = fopen(argv[2], "wb");
+
     cout << "Kata kunci : "; cin >> K;
-    cout <<"Deskripsi " << argv[1]<<"menjadi" <<argv[2]<<"...";
+    cout <<"Enkripsi "<<argv[1] << " menjadi " << argv[2] << "...";
     i = 0;
-    while (!feof(Fin)){
-        c = getc(Fin);
-        p = c^K[i]; //operasi XOR
-        putc(p, Fout);
-        i = (i +1) % K.length();
+    while (!feof(Fin)) {
+        p = getc(Fin);
+        c = p^K[i]; //operasi XOR putc(c, Fout);
+        i = (i+1) % K.length();
     }
     fclose(Fin);
     fclose(Fout);
